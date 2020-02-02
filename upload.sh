@@ -13,13 +13,13 @@ TMP1="${1}.tmp"
 TMP2="${2}.tmp"
 TMP3="${3}.tmp"
 
-# First rename the file
+# First rename the files
 mv $1 $TMP1
 mv $2 $TMP2
 mv $3 $TMP3
 
-# Now upload and rename remotely
-ftp -n $HOST <<END_SCRIPT
+# Now upload and rename remotely, -p is passive mode to work behind firewall etc.
+ftp -p -n $HOST <<END_SCRIPT
 quote USER $USER
 quote PASS $PASSWD
 binary
