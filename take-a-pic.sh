@@ -8,7 +8,7 @@
 # -q quality, 0 .. 100
 echo $0: taking a picture, annotating with $2 and storing as $1
 
-raspistill -vf -hf -t 5000 -w 2592 -h 1944 -q 70 \
+raspistill -t 5000 -w 2592 -h 1944 -q 70 \
  --exposure auto --metering matrix -awb auto --brightness 45 --saturation -10 -drc low  \
  -o $1 \
  --annotate 12 \
