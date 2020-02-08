@@ -14,6 +14,8 @@ cd ~/bin
 ./getfile.sh https://github.com/freddieFishCake/webcam-scripts/blob master upload.sh
 ./getfile.sh https://github.com/freddieFishCake/webcam-scripts/blob master webcam.sh
 
+chmod +x *.sh
+
 # where is interpret-weather.jar?
 
 cd ~
