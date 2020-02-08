@@ -3,10 +3,15 @@
 # Top level script to take, annotate, re-size and upload webcam images.
 # Probably called from a cron task.
 
-cameraNumber=0
+if [[ $# -ne 1 ]]; then
+    echo "Please specify the camera number, e.g. webcam.sh 1"
+    exit 2
+fi
+
+cameraNumber=$1
 dir=/tmp
 
-echo $(date) - $0
+echo $(date) - $0 for camera number $1
 
 cd $dir
 
@@ -26,10 +31,11 @@ rm *.jpg
 ~/bin/take-a-pic.sh $original $weatherTxt
 
 # Re-size the image to large / medium / small
-# height, width but constrained to original aspect ratio.
+# width, height but constrained to original aspect ratio.
 ~/bin/resize.sh $original $large 1440 1080
-~/bin/resize.sh $original $medium 1024 1200
-~/bin/resize.sh $original $small 256 320
+~/bin/resize.sh $original $medium 1200 1024
+# 100 x 75 matches the ydsc website
+~/bin/resize.sh $original $small 100 75
 
 # Upload via ftp to yorkshiredales.sc
 ~/bin/upload.sh $small $medium $large
